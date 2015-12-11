@@ -1,1 +1,3 @@
 http://www.tutorials.kode-blog.com/laravel-5-angularjs-tutorial
+https://github.com/subhankarbachchu/laravel_angular
+subhankarbachchu/Z******7
