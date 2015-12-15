@@ -1,0 +1,88 @@
+1. Step One — Install Apache
+--------------------------
+sudo apt-get update
+sudo apt-get install apache2
+
+
+2. Step Two — Install MySQL
+-------------------------
+sudo apt-get install mysql-server libapache2-mod-auth-mysql php5-mysql
+<root>
+
+
+3. Step Three — Install PHP
+-----------------------
+sudo apt-get install php5 libapache2-mod-php5 php5-mcrypt
+
+
+4. Step Four — RESULTS: See PHP on your Server
+------------------------------------------
+sudo nano /var/www/html/info.php
+
+<?php
+phpinfo();
+?>
+
+sudo service apache2 restart
+
+
+
+5. Step Five — Install Composer
+--------------------
+sudo chmod 777 -R /var/www
+curl -sS https://getcomposer.org/installer | php
+mv composer.phar /usr/local/bin/composer
+
+
+
+6. Step Six — Install Laravel
+--------------------
+composer global require "laravel/installer=~1.1"
+cd /var/www/
+laravel new blog
+cd blog
+php artisan serve
+
+
+
+7. Step Seven — Install phpMyAdmin
+-------------------------------
+sudo apt-get update
+sudo apt-get install phpmyadmin
+sudo php5enmod mcrypt
+
+
+by adding :
+	ServerName localhost
+	Include /etc/phpmyadmin/apache.conf
+to the /etc/apache2/apache2.conf file 
+
+
+sudo service apache2 restart
+http://domain_name_or_IP/phpmyadmin
+
+
+
+
+
+Create Database
+-----------------
+mysql -u root -p
+SHOW DATABASES;
+CREATE DATABASE blog;
+CREATE USER 'blog'@'localhost' IDENTIFIED BY 'blog123@';
+GRANT ALL PRIVILEGES ON blog.* TO 'blog'@'localhost';
+
+
+
+
+Migration
+-----------------
+php artisan migrate
+
+
+
+SELECT User, Password, Host FROM mysql.user;
+DROP USER 'blog_admin';
+
+
