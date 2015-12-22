@@ -77,6 +77,7 @@ subhankar@limtexad117:/var/www/blog$
 
 
 
+
 Create Database
 -----------------
 mysql -u root -p
@@ -87,14 +88,8 @@ GRANT ALL PRIVILEGES ON blog.* TO 'blog'@'localhost';
 
 
 
-
 Migration
 -----------------
 php artisan migrate
-
-
-
-SELECT User, Password, Host FROM mysql.user;
-DROP USER 'blog_admin';
-
-
+-- php artisan down
+-- php artisan up
