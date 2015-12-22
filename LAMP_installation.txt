@@ -69,10 +69,14 @@ subhankar@limtexad117:~$ cd /var/www/blog
 subhankar@limtexad117:/var/www/blog$ git init
 Reinitialized existing Git repository in /var/www/blog/.git/
 subhankar@limtexad117:/var/www/blog$ git add .
-subhankar@limtexad117:/var/www/blog$ git commit -m "9th commit"
+subhankar@limtexad117:/var/www/blog$ git commit -m "12th commit"
 subhankar@limtexad117:/var/www/blog$ git push -u origin master
 Username for 'https://github.com': subhankarbachchu
 Password for 'https://subhankarbachchu@github.com': 
+subhankar@limtexad117:/var/www/blog$ 
+
+subhankar@limtexad117:/var/www/blog$ git init
+subhankar@limtexad117:/var/www/blog$ git pull origin
 subhankar@limtexad117:/var/www/blog$ 
 
 
