@@ -7,14 +7,14 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class Employees extends Controller
-{
+class Employees extends Controller {
+
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
-    public function index($id = null){
+    public function index($id = null) {
         if ($id == null) {
             return Employee::orderBy('id', 'asc')->get();
         } else {
@@ -23,22 +23,12 @@ class Employees extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param  Request  $request
+     * @return Response
      */
-    public function storestore(Request $request){
+    public function store(Request $request) {
         $employee = new Employee;
 
         $employee->name = $request->input('name');
@@ -54,31 +44,20 @@ class Employees extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
-    public function show($id){
+    public function show($id) {
         return Employee::find($id);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
-    public function update(Request $request, $id){
+    public function update(Request $request, $id) {
         $employee = Employee::find($id);
 
         $employee->name = $request->input('name');
@@ -87,21 +66,19 @@ class Employees extends Controller
         $employee->position = $request->input('position');
         $employee->save();
 
-        return "Sucess updating user #" . $employee->id;
+        return "Sucess updating employee #" . $employee->id;
     }
-
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
-    public function destroy(Request $request){
-        $employee = Employee::find($request->input('id'));
-
+    public function destroy($id) {
+        $employee = Employee::find($id);
         $employee->delete();
-
-        return "Employee record successfully deleted #" . $request->input('id');
+        
+        return "Employee record successfully deleted #" . $id;
     }
 }
