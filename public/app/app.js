@@ -1,5 +1,5 @@
 var app = angular.module('employeeRecords', [])
-        .constant('API_URL', 'http://localhost:8000/blog/public/api/v1/');
+        .constant('API_URL', 'http://localhost:8000/laravel_angular/public/api/v1/');
 
 //var app = angular.module('app', []);
 

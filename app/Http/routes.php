@@ -11,11 +11,11 @@
 |
 */
 
-Route::get('/blog', function () {
+Route::get('/laravel_angular', function () {
     return view('index');
 });
 
-Route::get('/blog/public/api/v1/employees/{id?}', 'Employees@index');
-Route::post('/blog/public/api/v1/employees', 'Employees@store');
-Route::post('/blog/public/api/v1/employees/{id}', 'Employees@update');
-Route::delete('/blog/public/api/v1/employees/{id}', 'Employees@destroy');	
+Route::get('/laravel_angular/public/api/v1/employees/{id?}', 'Employees@index');
+Route::post('/laravel_angular/public/api/v1/employees', 'Employees@store');
+Route::post('/laravel_angular/public/api/v1/employees/{id}', 'Employees@update');
+Route::delete('/laravel_angular/public/api/v1/employees/{id}', 'Employees@destroy');	

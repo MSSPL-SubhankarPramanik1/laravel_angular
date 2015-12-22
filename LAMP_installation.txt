@@ -95,5 +95,6 @@ GRANT ALL PRIVILEGES ON blog.* TO 'blog'@'localhost';
 Migration
 -----------------
 php artisan migrate
--- php artisan down
--- php artisan up
+-- php artisan down //	Application is now in maintenance mode.
+-- php artisan up   //  Application is now live
+-- php artisan key:generate // Application key
