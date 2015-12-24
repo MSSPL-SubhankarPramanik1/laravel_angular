@@ -4,15 +4,18 @@ sudo apt-get update
 sudo apt-get install apache2
 
 
+
 2. Step Two — Install MySQL
 -------------------------
 sudo apt-get install mysql-server libapache2-mod-auth-mysql php5-mysql
 <root>
 
 
+
 3. Step Three — Install PHP
 -----------------------
 sudo apt-get install php5 libapache2-mod-php5 php5-mcrypt
+
 
 
 4. Step Four — RESULTS: See PHP on your Server
@@ -39,8 +42,8 @@ mv composer.phar /usr/local/bin/composer
 --------------------
 composer global require "laravel/installer=~1.1"
 cd /var/www/
-laravel new blog
-cd blog
+laravel new laravel_angular
+cd laravel_angular
 php artisan serve
 
 
@@ -63,22 +66,39 @@ http://domain_name_or_IP/phpmyadmin
 
 
 
-8. Step Eight — Git push/pull
+8. Step Eight — Migration
+-----------------
+php artisan migrate
+-- php artisan down 		//	Application is now in maintenance mode.
+-- php artisan up   		//  Application is now live
+-- php artisan key:generate // Application key
+
+
+
+8. Step Nine — Git push/pull/clone
 -------------------------------
-subhankar@limtexad117:~$ cd /var/www/blog
-subhankar@limtexad117:/var/www/blog$ git init
-Reinitialized existing Git repository in /var/www/blog/.git/
-subhankar@limtexad117:/var/www/blog$ git add .
-subhankar@limtexad117:/var/www/blog$ git commit -m "12th commit"
-subhankar@limtexad117:/var/www/blog$ git push -u origin master
+subhankar@limtexad117:~$ cd /var/www/laravel_angular
+subhankar@limtexad117:/var/www/laravel_angular$ git init
+Reinitialized existing Git repository in /var/www/laravel_angular/.git/
+subhankar@limtexad117:/var/www/laravel_angular$ git add .
+subhankar@limtexad117:/var/www/laravel_angular$ git commit -m "12th commit"
+subhankar@limtexad117:/var/www/laravel_angular$ git push -u origin master
 Username for 'https://github.com': subhankarbachchu
 Password for 'https://subhankarbachchu@github.com': 
-subhankar@limtexad117:/var/www/blog$ 
+subhankar@limtexad117:/var/www/laravel_angular$ 
 
-subhankar@limtexad117:/var/www/blog$ git init
-subhankar@limtexad117:/var/www/blog$ git pull origin
-subhankar@limtexad117:/var/www/blog$ 
+subhankar@limtexad117:/var/www/laravel_angular$ git init
+subhankar@limtexad117:/var/www/laravel_angular$ git pull origin
+subhankar@limtexad117:/var/www/laravel_angular$ 
 
+subhankar@limtexad117:/var/www/laravel_angular$ git init
+subhankar@limtexad117:/var/www/laravel_angular$ git clone https://github.com/subhankarbachchu/laravel_angular.git
+subhankar@limtexad117:/var/www/laravel_angular$ 
+
+
+
+
+------------- END ------------
 
 
 
@@ -86,15 +106,6 @@ Create Database
 -----------------
 mysql -u root -p
 SHOW DATABASES;
-CREATE DATABASE blog;
-CREATE USER 'blog'@'localhost' IDENTIFIED BY 'blog123@';
-GRANT ALL PRIVILEGES ON blog.* TO 'blog'@'localhost';
-
-
-
-Migration
------------------
-php artisan migrate
--- php artisan down //	Application is now in maintenance mode.
--- php artisan up   //  Application is now live
--- php artisan key:generate // Application key
+CREATE DATABASE laravel_angular;
+CREATE USER 'laravel_angular'@'localhost' IDENTIFIED BY 'laravel_angular123@';
+GRANT ALL PRIVILEGES ON laravel_angular.* TO 'laravel_angular'@'localhost';
