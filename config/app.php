@@ -82,6 +82,8 @@ return [
 
     'cipher' => 'AES-256-CBC',
 
+    'site_url' => 'http://localhost:8000/laravel_angular',
+
     /*
     |--------------------------------------------------------------------------
     | Logging Configuration

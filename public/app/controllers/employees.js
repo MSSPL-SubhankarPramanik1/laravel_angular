@@ -2,6 +2,7 @@ app.controller('employeesController', function($scope, $http, API_URL) {
     //retrieve employees listing from API
     $http.get(API_URL + "employees")
             .success(function(response) {
+                console.log(response);
                 $scope.employees = response;
             });
     

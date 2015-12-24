@@ -5,99 +5,87 @@
 
         <!-- Load Bootstrap CSS -->
         <link href="<?= asset('css/bootstrap.min.css') ?>" rel="stylesheet">
-
+        <link href="<?= asset('css/users.css') ?>" rel="stylesheet">
+        
     </head>
     <body>
-        <h2>Employees Database</h2>
-        <div  ng-controller="employeesController">
-
-            <!-- Table-to-load-the-data Part -->
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Contact No</th>
-                        <th>Position</th>
-                        <th><button id="btn-add" class="btn btn-primary btn-xs" ng-click="toggle('add', 0)">Add New Employee</button></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="employee in employees">
-                        <td><%= employee.id %></td>
-                        <td><%= employee.name %></td>
-                        <td><%= employee.email %></td>
-                        <td><%= employee.contact_number %></td>
-                        <td><%= employee.position %></td>
-                        <td>
-                            <button class="btn btn-default btn-xs btn-detail" ng-click="toggle('edit', employee.id)">Edit</button>
-                            <button class="btn btn-danger btn-xs btn-delete" ng-click="confirmDelete(employee.id)">Delete</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <!-- End of Table-to-load-the-data Part -->
-            <!-- Modal (Pop up when detail button clicked) -->
-            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-                            <h4 class="modal-title" id="myModalLabel"><%=form_title%></h4>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <div class="panel panel-login">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <a href="#" class="active" id="login-form-link">Login</a>
+                                </div>
+                                <div class="col-xs-6">
+                                    <a href="#" id="register-form-link">Register</a>
+                                </div>
+                            </div>
+                            <hr>
                         </div>
-                        <div class="modal-body">
-                            <form name="frmEmployees" class="form-horizontal" novalidate="">
-
-                                <div class="form-group error">
-                                    <label for="inputEmail3" class="col-sm-3 control-label">Name</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control has-error" id="name" name="name" placeholder="Fullname" value="<%=name%>" 
-                                        ng-model="employee.name" ng-required="true">
-                                        <span class="help-inline" 
-                                        ng-show="frmEmployees.name.$invalid && frmEmployees.name.$touched">Name field is required</span>
-                                    </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <form id="login-form" action="http://phpoll.com/login/process" method="post" role="form" style="display: block;">
+                                        <div class="form-group">
+                                            <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password">
+                                        </div>
+                                        <div class="form-group text-center">
+                                            <input type="checkbox" tabindex="3" class="" name="remember" id="remember">
+                                            <label for="remember"> Remember Me</label>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-sm-6 col-sm-offset-3">
+                                                    <input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Log In">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="text-center">
+                                                        <a href="http://phpoll.com/recover" tabindex="5" class="forgot-password">Forgot Password?</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <form id="register-form" action="http://phpoll.com/register/process" method="post" role="form" style="display: none;">
+                                        <div class="form-group">
+                                            <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Email Address" value="">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" name="confirm-password" id="confirm-password" tabindex="2" class="form-control" placeholder="Confirm Password">
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-sm-6 col-sm-offset-3">
+                                                    <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Register Now">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
-
-                                <div class="form-group">
-                                    <label for="inputEmail3" class="col-sm-3 control-label">Email</label>
-                                    <div class="col-sm-9">
-                                        <input type="email" class="form-control" id="email" name="email" placeholder="Email Address" value="<%=email%>" 
-                                        ng-model="employee.email" ng-required="true">
-                                        <span class="help-inline" 
-                                        ng-show="frmEmployees.email.$invalid && frmEmployees.email.$touched">Valid Email field is required</span>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="inputEmail3" class="col-sm-3 control-label">Contact Number</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="contact_number" name="contact_number" placeholder="Contact Number" value="<%=contact_number%>" 
-                                        ng-model="employee.contact_number" ng-required="true">
-                                    <span class="help-inline" 
-                                        ng-show="frmEmployees.contact_number.$invalid && frmEmployees.contact_number.$touched">Contact number field is required</span>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="inputEmail3" class="col-sm-3 control-label">Position</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="position" name="position" placeholder="Position" value="<%=position%>" 
-                                        ng-model="employee.position" ng-required="true">
-                                    <span class="help-inline" 
-                                        ng-show="frmEmployees.position.$invalid && frmEmployees.position.$touched">Position field is required</span>
-                                    </div>
-                                </div>
-
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-primary" id="btn-save" ng-click="save(modalstate, id)" ng-disabled="frmEmployees.$invalid">Save changes</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
+
+
 
         <!-- Load Javascript Libraries (AngularJS, JQuery, Bootstrap) -->
         <script src="<?= asset('app/lib/angular/angular.min.js') ?>"></script>
@@ -107,5 +95,11 @@
         <!-- AngularJS Application Scripts -->
         <script src="<?= asset('app/app.js') ?>"></script>
         <script src="<?= asset('app/controllers/employees.js') ?>"></script>
+        <script src="<?= asset('app/controllers/users.js') ?>"></script>
+        <script type="text/javascript">
+            
+        </script>  
     </body>
 </html>
+
+ 

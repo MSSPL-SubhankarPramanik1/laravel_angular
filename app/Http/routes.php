@@ -15,6 +15,12 @@ Route::get('/laravel_angular', function () {
     return view('index');
 });
 
+Route::get('/laravel_angular/employees/', 'Employees@index');
+
+
+
+
+
 Route::get('/laravel_angular/public/api/v1/employees/{id?}', 'Employees@index');
 Route::post('/laravel_angular/public/api/v1/employees', 'Employees@store');
 Route::post('/laravel_angular/public/api/v1/employees/{id}', 'Employees@update');
