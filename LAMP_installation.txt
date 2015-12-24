@@ -1,25 +1,25 @@
 1. Step One — Install Apache
---------------------------
+-------------------------------
 sudo apt-get update
 sudo apt-get install apache2
 
 
 
 2. Step Two — Install MySQL
--------------------------
+-------------------------------
 sudo apt-get install mysql-server libapache2-mod-auth-mysql php5-mysql
 <root>
 
 
 
 3. Step Three — Install PHP
------------------------
+------------------------------
 sudo apt-get install php5 libapache2-mod-php5 php5-mcrypt
 
 
 
 4. Step Four — RESULTS: See PHP on your Server
-------------------------------------------
+------------------------------------------------
 sudo nano /var/www/html/info.php
 
 <?php
@@ -31,25 +31,35 @@ sudo service apache2 restart
 
 
 5. Step Five — Install Composer
---------------------
+----------------------------------
 sudo chmod 777 -R /var/www
 curl -sS https://getcomposer.org/installer | php
-mv composer.phar /usr/local/bin/composer
+sudo mv composer.phar /usr/local/bin/composer
 
 
 
 6. Step Six — Install Laravel
---------------------
+---------------------------------
 composer global require "laravel/installer=~1.1"
 cd /var/www/
+export PATH=~/.composer/vendor/bin:$PATH
 laravel new laravel_angular
 cd laravel_angular
 php artisan serve
 
 
 
-7. Step Seven — Install phpMyAdmin
--------------------------------
+7. Step Seven — Edit in .env
+------------------------------------
+DB_HOST=localhost
+DB_DATABASE=laravel_angular
+DB_USERNAME=laravel_angular
+DB_PASSWORD=laravel_angular123@
+
+
+
+8. Step Eight — Install phpMyAdmin
+------------------------------------
 sudo apt-get update
 sudo apt-get install phpmyadmin
 sudo php5enmod mcrypt
@@ -66,7 +76,7 @@ http://domain_name_or_IP/phpmyadmin
 
 
 
-8. Step Eight — Migration
+9. Step Nine — Migration
 -----------------
 php artisan migrate
 -- php artisan down 		//	Application is now in maintenance mode.
@@ -75,7 +85,7 @@ php artisan migrate
 
 
 
-8. Step Nine — Git push/pull/clone
+10. Step Ten — Git push/pull/clone
 -------------------------------
 subhankar@limtexad117:~$ cd /var/www/laravel_angular
 subhankar@limtexad117:/var/www/laravel_angular$ git init
