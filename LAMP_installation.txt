@@ -6,7 +6,7 @@ sudo apt-get install apache2
 
 
 2. Step Two — Install MySQL
--------------------------------
+------------------------------
 sudo apt-get install mysql-server libapache2-mod-auth-mysql php5-mysql
 <root>
 
@@ -19,7 +19,7 @@ sudo apt-get install php5 libapache2-mod-php5 php5-mcrypt
 
 
 4. Step Four — RESULTS: See PHP on your Server
-------------------------------------------------
+-------------------------------------------------
 sudo nano /var/www/html/info.php
 
 <?php
@@ -39,7 +39,7 @@ sudo mv composer.phar /usr/local/bin/composer
 
 
 6. Step Six — Install Laravel
----------------------------------
+--------------------------------
 composer global require "laravel/installer=~1.1"
 cd /var/www/
 export PATH=~/.composer/vendor/bin:$PATH
@@ -49,7 +49,7 @@ php artisan serve
 
 
 
-7. Step Seven — Edit in .env
+7. Step Seven — Edit in .env file
 ------------------------------------
 DB_HOST=localhost
 DB_DATABASE=laravel_angular
@@ -59,34 +59,65 @@ DB_PASSWORD=laravel_angular123@
 
 
 8. Step Eight — Install phpMyAdmin
-------------------------------------
+-------------------------------------
 sudo apt-get update
 sudo apt-get install phpmyadmin
 sudo php5enmod mcrypt
-
 
 by adding :
 	ServerName localhost
 	Include /etc/phpmyadmin/apache.conf
 to the /etc/apache2/apache2.conf file 
 
-
 sudo service apache2 restart
 http://domain_name_or_IP/phpmyadmin
 
 
+Goto localhost/phpmyadmin
+Click Users Tab
+Click "Add User"
+User name: 	laravel_angular
+Host: 		localhost (Select Local) 
+Password: 	laravel_angular123@
+Re-type: 	laravel_angular123@
+
+Select : 	Create database with same name and grant all privileges
+Select : 	Grant all privileges on wildcard name (username\_%)
+Select : 	Global privileges - Check All
+
+
 
 9. Step Nine — Migration
------------------
+---------------------------
 php artisan migrate
--- php artisan down 		//	Application is now in maintenance mode.
--- php artisan up   		//  Application is now live
--- php artisan key:generate // Application key
+-- php artisan down 			//	Application is now in maintenance mode.
+-- php artisan up   			//  Application is now live
+-- php artisan key:generate 	// Application key
 
 
 
-10. Step Ten — Git push/pull/clone
--------------------------------
+10. Step Ten — Install Git
+-----------------------------
+sudo apt-get install git
+
+
+
+11. Step Eleven — Git createRepository/clone/push/pull
+---------------------------------------------------------
+CREATE REPOSITORY:
+subhankar@limtexad117:/var/www/laravel_angular$ git init
+subhankar@limtexad117:/var/www/laravel_angular$ git add .
+subhankar@limtexad117:/var/www/laravel_angular$ git config --global user.email "subhankar.bachchu@gmail.com"
+subhankar@limtexad117:/var/www/laravel_angular$ git commit -m "first commit"
+subhankar@limtexad117:/var/www/laravel_angular$ git remote add origin https://github.com/subhankarbachchu/converge.git
+subhankar@limtexad117:/var/www/laravel_angular$ git push -u origin master
+
+CLONE:
+subhankar@limtexad117:/var/www/laravel_angular$ git init
+subhankar@limtexad117:/var/www/laravel_angular$ git clone https://github.com/subhankarbachchu/laravel_angular.git
+subhankar@limtexad117:/var/www/laravel_angular$ 
+
+PUSH:
 subhankar@limtexad117:~$ cd /var/www/laravel_angular
 subhankar@limtexad117:/var/www/laravel_angular$ git init
 Reinitialized existing Git repository in /var/www/laravel_angular/.git/
@@ -95,16 +126,12 @@ subhankar@limtexad117:/var/www/laravel_angular$ git commit -m "12th commit"
 subhankar@limtexad117:/var/www/laravel_angular$ git push -u origin master
 Username for 'https://github.com': subhankarbachchu
 Password for 'https://subhankarbachchu@github.com': 
-subhankar@limtexad117:/var/www/laravel_angular$ 
+subhankar@limtexad117:/var/www/laravel_angular$
 
+PULL:
 subhankar@limtexad117:/var/www/laravel_angular$ git init
 subhankar@limtexad117:/var/www/laravel_angular$ git pull origin
 subhankar@limtexad117:/var/www/laravel_angular$ 
-
-subhankar@limtexad117:/var/www/laravel_angular$ git init
-subhankar@limtexad117:/var/www/laravel_angular$ git clone https://github.com/subhankarbachchu/laravel_angular.git
-subhankar@limtexad117:/var/www/laravel_angular$ 
-
 
 
 
