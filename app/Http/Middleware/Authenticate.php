@@ -38,10 +38,9 @@ class Authenticate
             if ($request->ajax()) {
                 return response('Unauthorized.', 401);
             } else {
-                return redirect()->guest('auth/login');
+                return redirect()->guest('/laravel_angular/users/login'); //Redirect to login page if no auth!
             }
         }
-
         return $next($request);
     }
 }

@@ -134,8 +134,18 @@ subhankar@limtexad117:/var/www/laravel_angular$ git pull origin
 subhankar@limtexad117:/var/www/laravel_angular$ 
 
 
+12. Class 'Html' not found
+-----------------------------
+1) add the following in the require section of the composer.json file and run composer update: "illuminate/html": "5.0.* 
+2) add this in providers array of config/app.php file:  
+	Illuminate\Html\HtmlServiceProvider::class, 
+3) register facades by adding these two lines in the aliases array:
+	'Form'      => Illuminate\Html\FormFacade::class, 
+	'Html'      => Illuminate\Html\HtmlFacade::class,
 
-------------- END ------------
+
+
+------------- END ------------	
 
 
 
@@ -146,3 +156,5 @@ SHOW DATABASES;
 CREATE DATABASE laravel_angular;
 CREATE USER 'laravel_angular'@'localhost' IDENTIFIED BY 'laravel_angular123@';
 GRANT ALL PRIVILEGES ON laravel_angular.* TO 'laravel_angular'@'localhost';
+
+https://bhavyanshu.me/tutorials/easy-user-registration-and-authentication-in-laravel-5/09/24/2015/

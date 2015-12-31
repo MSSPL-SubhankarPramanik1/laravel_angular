@@ -23,3 +23,26 @@ Route::get($project_name.'/public/api/v1/employees/{id?}', 'Employees@index');
 Route::post($project_name.'/public/api/v1/employees', 'Employees@store');
 Route::post($project_name.'/public/api/v1/employees/{id}', 'Employees@update');
 Route::delete($project_name.'/public/api/v1/employees/{id}', 'Employees@destroy');	
+
+
+
+
+/* User Authentication */
+Route::get($project_name.'/users/login', 'Auth\AuthController@getLogin');
+Route::post($project_name.'/users/login', 'Auth\AuthController@postLogin');
+Route::get($project_name.'/users/logout', 'Auth\AuthController@getLogout');
+
+Route::get($project_name.'/users/register', 'Auth\AuthController@getRegister');
+Route::post($project_name.'/users/register', 'Auth\AuthController@postRegister');
+
+
+/* Authenticated users */
+Route::group(['middleware' => 'auth'], function()
+{
+	$project_name = '/laravel_angular';		//'laravel_angular'
+
+    Route::get($project_name.'/users/dashboard', array('as'=>'dashboard', function()
+	{
+		return View('users.dashboard');
+	}));
+});
