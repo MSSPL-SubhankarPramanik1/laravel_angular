@@ -9,23 +9,27 @@ app.controller('employeesController', function($scope, $http, API_URL) {
     //show modal form
     $scope.toggle = function(modalstate, id) {
         $scope.modalstate = modalstate;
+        $scope.id = id;
 
         switch (modalstate) {
             case 'add':
                 $scope.form_title = "Add New Employee";
                 break;
             case 'edit':
+                $scope.form_title = "Edit Employee";
+                break;
+            case 'detail':
                 $scope.form_title = "Employee Detail";
-                $scope.id = id;
-                $http.get(API_URL + 'employees/' + id)
-                        .success(function(response) {
-                            console.log(response);
-                            $scope.employee = response;
-                        });
                 break;
             default:
                 break;
         }
+
+        $http.get(API_URL + 'employees/' + id)
+        .success(function(response) {
+            console.log(response);
+            $scope.employee = response;
+        });
         console.log(id);
         $('#myModal').modal('show');
     }

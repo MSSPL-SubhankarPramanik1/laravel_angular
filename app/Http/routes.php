@@ -11,17 +11,15 @@
 |
 */
 
-Route::get('/laravel_angular', function () {
-    return view('index');
+
+$project_name = '/laravel_angular';		//'laravel_angular'
+
+Route::get($project_name, function () {
+    //return view('index');
+    return view('employees');
 });
 
-Route::get('/laravel_angular/employees/', 'Employees@index');
-
-
-
-
-
-Route::get('/laravel_angular/public/api/v1/employees/{id?}', 'Employees@index');
-Route::post('/laravel_angular/public/api/v1/employees', 'Employees@store');
-Route::post('/laravel_angular/public/api/v1/employees/{id}', 'Employees@update');
-Route::delete('/laravel_angular/public/api/v1/employees/{id}', 'Employees@destroy');	
+Route::get($project_name.'/public/api/v1/employees/{id?}', 'Employees@index');
+Route::post($project_name.'/public/api/v1/employees', 'Employees@store');
+Route::post($project_name.'/public/api/v1/employees/{id}', 'Employees@update');
+Route::delete($project_name.'/public/api/v1/employees/{id}', 'Employees@destroy');	
