@@ -37,12 +37,14 @@ Route::post($project_name.'/users/register', 'Auth\AuthController@postRegister')
 
 
 /* Authenticated users */
-Route::group(['middleware' => 'auth'], function()
-{
+Route::group(['middleware' => 'auth'], function() {
 	$project_name = '/laravel_angular';		//'laravel_angular'
 
-    Route::get($project_name.'/users/dashboard', array('as'=>'dashboard', function()
-	{
+    Route::get($project_name.'/users/dashboard', array('as'=>'dashboard', function() {
 		return View('users.dashboard');
+	}));
+
+	Route::get($project_name.'/users/employees', array('as'=>'employees', function() {
+		return view('employees.list');
 	}));
 });

@@ -1,4 +1,4 @@
-@extends('baselayout')
+@extends('header')
 
 @section('title') Dashboard @stop
 

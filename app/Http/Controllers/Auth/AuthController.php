@@ -48,14 +48,14 @@ class AuthController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data)
+    /*protected function validator(array $data)
     {
         return Validator::make($data, [
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|confirmed|min:6',
         ]);
-    }
+    }*/
 
     /**
      * Create a new user instance after a valid registration.
@@ -79,7 +79,7 @@ class AuthController extends Controller
 
     protected function postLogin(LoginRequest $request) {
         if ($this->auth->attempt($request->only('email', 'password'))) {
-            return redirect()->route('dashboard');
+            return redirect()->route('employees');
         }
  
         return redirect('laravel_angular/users/login')->withErrors([
@@ -97,7 +97,11 @@ class AuthController extends Controller
         $this->user->email = $request->email;
         $this->user->password = bcrypt($request->password);
         $this->user->save();
-        return redirect('laravel_angular/users/login');
+        //return redirect('laravel_angular/users/login');
+
+        if ($this->auth->attempt($request->only('email', 'password'))) {
+            return redirect()->route('dashboard');
+        }
     }
 
     /**
