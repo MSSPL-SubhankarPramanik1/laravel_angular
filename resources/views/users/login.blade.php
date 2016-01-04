@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en-US" ng-app="employeeRecords">
+<html lang="en-US" ng-app="laravel_angular">
     <head>
-        <title>Laravel 5 AngularJS CRUD Example</title>
+        <title>Laravel5 AngularJS</title>
 
         <!-- Load Bootstrap CSS -->
         <link href="<?= asset('css/bootstrap.min.css') ?>" rel="stylesheet">
+        <link href="<?= asset('css/header.css') ?>" rel="stylesheet">
         <link href="<?= asset('css/users.css') ?>" rel="stylesheet">
         
     </head>
@@ -12,14 +13,15 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-md-offset-3">
-                    <div class="panel panel-login">
+                    <h2 class="text-align-center">Simple Laravel5 AngularJS Application</h2>
+                    <div class="panel panel-login" ng-controller="usersController">
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-6">
-                                    <a href="#" class="active" id="login-form-link">Login</a>
+                                    <a href="#" class="active" id="login-form-link" ng-click="toggle('login')">Login</a>
                                 </div>
                                 <div class="col-xs-6">
-                                    <a href="#" id="register-form-link">Register</a>
+                                    <a href="#" id="register-form-link" ng-click="toggle('register')">Register</a>
                                 </div>
                             </div>
                             <hr>
@@ -97,9 +99,6 @@
             </div>
         </div>
 
-
-
-
         <!-- Load Javascript Libraries (AngularJS, JQuery, Bootstrap) -->
         <script src="<?= asset('app/lib/angular/angular.min.js') ?>"></script>
         <script src="<?= asset('js/jquery.min.js') ?>"></script>
@@ -107,10 +106,8 @@
         
         <!-- AngularJS Application Scripts -->
         <script src="<?= asset('app/app.js') ?>"></script>
-        <script src="<?= asset('app/controllers/users.js') ?>"></script>
-        <script type="text/javascript">
-            
-        </script>  
+        <script src="<?= asset('app/controllers/users.js') ?>"></script> 
+        
     </body>
 </html>
 
