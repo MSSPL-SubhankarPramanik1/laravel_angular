@@ -41,10 +41,13 @@ Route::group(['middleware' => 'auth'], function() {
 	$project_name = '/laravel_angular';		//'laravel_angular'
 
     Route::get($project_name.'/users/dashboard', array('as'=>'dashboard', function() {
-		return View('users.dashboard');
+    	$name = Session::get('name');
+		return View::make('users.dashboard', compact('name'));
 	}));
 
 	Route::get($project_name.'/users/employees', array('as'=>'employees', function() {
-		return view('employees.list');
+		//return view('employees.list');
+		$name = Session::get('name');
+		return View::make('employees.list', compact('name'));
 	}));
 });

@@ -80,13 +80,8 @@ class AuthController extends Controller
     protected function postLogin(LoginRequest $request) {
         if ($this->auth->attempt($request->only('email', 'password'))) {       
             $user = $this->auth->user();
-            //return $user->id;
-            //return json_decode($user, true);
-            if($user->id == 1){
-                return redirect()->route('employees');
-            } else {
-                return redirect()->route('dashboard');                
-            }
+            $redirect = ($user->id == 1) ? 'employees' : 'dashboard';               
+            return redirect()->route($redirect)->with('name', $user->name);
         }
  
         return redirect('laravel_angular/users/login')->withErrors([
