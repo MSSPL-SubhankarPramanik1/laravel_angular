@@ -46,7 +46,6 @@ Route::group(['middleware' => 'auth'], function() {
 	}));
 
 	Route::get($project_name.'/users/employees', array('as'=>'employees', function() {
-		//return view('employees.list');
 		$name = Session::get('name');
 		return View::make('employees.list', compact('name'));
 	}));
