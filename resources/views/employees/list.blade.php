@@ -101,6 +101,5 @@
     </div>    
 </div>
 
-
 <script src="<?= asset('app/controllers/employees.js') ?>"></script>        
 @stop

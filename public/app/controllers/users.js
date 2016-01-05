@@ -1,10 +1,9 @@
 app.controller('usersController', function($scope, $http, API_URL) {
 
     //toggle between login and registration form
-     $scope.toggle = function(form_type) {
+     /*$scope.toggle = function(form_type) {
         $scope.form_type = form_type;
         if (form_type == 'login') {     // login
-           //$(".alert-danger").removeClass().html('');
             $("ul").empty();
             $("#login-form").delay(100).fadeIn(100);
             $("#register-form").fadeOut(100);
@@ -12,7 +11,6 @@ app.controller('usersController', function($scope, $http, API_URL) {
             $("#login-form-link").addClass('active');
             //e.preventDefault();
         } else {                        // registration
-           //$(".alert-danger").removeClass().html('');
             $("ul").empty();
             $("#register-form").delay(100).fadeIn(100);
             $("#login-form").fadeOut(100);
@@ -20,7 +18,36 @@ app.controller('usersController', function($scope, $http, API_URL) {
             $("#register-form-link").addClass('active');
             //e.preventDefault();
         }
-    }    
+    }*/  
+
+
+    $scope.toggle = function(form_type) {
+        $scope.form_type = form_type;
+        $("ul").empty();
+        $(".form-tab").fadeOut(100);
+        $("#"+form_type+"-form").delay(100).fadeIn(100);
+        $(".form-link").removeClass('active');
+        $("#"+form_type+"-form-link").addClass('active');
+        //e.preventDefault();       
+    }   
+
+    //login
+    /*$scope.login = function() {
+        var url = "/laravel_angular/users/login";
+        $http({
+            method: 'POST',
+            url: url,
+            data: $.param($scope.users),
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        }).success(function(response) {
+            console.log(response);
+            //location.reload();
+        }).error(function(response) {
+            console.log(response);
+            alert('This is embarassing. An error has occured. Please check the log for details');
+        });
+    }*/
+
 
     //logout
     $scope.confirmLogout = function(id) {

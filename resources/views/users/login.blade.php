@@ -18,10 +18,10 @@
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-6">
-                                    <a href="#" class="active" id="login-form-link" ng-click="toggle('login')">Login</a>
+                                    <a href="#" class="form-link active" id="login-form-link" ng-click="toggle('login')">Login</a>
                                 </div>
                                 <div class="col-xs-6">
-                                    <a href="#" id="register-form-link" ng-click="toggle('register')">Register</a>
+                                    <a href="#" class="form-link " id="register-form-link" ng-click="toggle('register')">Register</a>
                                 </div>
                             </div>
                             <hr>
@@ -30,15 +30,13 @@
                             {!! Html::ul($errors->all(), array('class'=>'alert-danger errors')) !!}
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <!-- <form id="login-form" action="http://phpoll.com/login/process" method="post" role="form" style="display: block;"> -->
-                                    {!! Form::open(array('url' => 'laravel_angular/users/login','class'=>'form','id'=>'login-form','role'=>'form','style'=>'display: block;')) !!}
+                                    <!-- <form id="login-form" role="form" style="display: block;"> -->
+                                    {!! Form::open(array('url' => 'laravel_angular/users/login','class'=>'form form-tab','id'=>'login-form','role'=>'form','style'=>'display: block;')) !!}
                                         <div class="form-group">
-                                            <!-- <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value=""> -->
-                                            {!! Form::text('email', null, array('class' => 'form-control','placeholder' => 'Email Address')) !!}
+                                            {!! Form::text('email', null, array('class' => 'form-control','placeholder' => 'Email Address', 'ng-model'=>"users.email")) !!}
                                         </div>
                                         <div class="form-group">
-                                            <!-- <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password"> -->
-                                            {!! Form::password('password', array('class' => 'form-control','placeholder' => 'Password')) !!}
+                                            {!! Form::password('password', array('class' => 'form-control','placeholder' => 'Password', 'ng-model'=>"users.password")) !!}
                                         </div>
                                         <div class="form-group text-center">
                                             <input type="checkbox" tabindex="3" class="" name="remember" id="remember">
@@ -47,7 +45,7 @@
                                         <div class="form-group">
                                             <div class="row">
                                                 <div class="col-sm-6 col-sm-offset-3">
-                                                    <input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Log In">
+                                                    <input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Log In" ng-click="login()" >
                                                 </div>
                                             </div>
                                         </div>
@@ -63,7 +61,7 @@
                                     <!-- </form> -->
                                     {!! Form::close() !!}
                                     <!-- <form id="register-form" action="http://phpoll.com/register/process" method="post" role="form" style="display: none;"> -->
-                                    {!! Form::open(array('url' => 'laravel_angular/users/register','class'=>'form','id'=>'register-form','role'=>'form','style'=>'display: none;')) !!}
+                                    {!! Form::open(array('url' => 'laravel_angular/users/register','class'=>'form form-tab','id'=>'register-form','role'=>'form','style'=>'display: none;')) !!}
                                         <div class="form-group">
                                             <!-- <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value=""> -->
                                             {!! Form::text('name', null, array('class' => 'form-control','placeholder' => 'Name')) !!}

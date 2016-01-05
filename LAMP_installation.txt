@@ -140,7 +140,9 @@ subhankar@limtexad117:/var/www/laravel_angular$ git pull origin
 subhankar@limtexad117:/var/www/laravel_angular$ 
 
 
-12. Class 'Html' not found
+KNOWLEDGE:
+
+1. Class 'Html' not found
 -----------------------------
 1) add the following in the require section of the composer.json file and run composer update: "illuminate/html": "5.0.* 
 2) add this in providers array of config/app.php file:  
@@ -150,6 +152,18 @@ subhankar@limtexad117:/var/www/laravel_angular$
 	'Html'      => Illuminate\Html\HtmlFacade::class,
 
 
+2. Migration
+---------------
+php artisan make:migration add_votes_to_users_table --table=users 	// create migration file for existing table
+php artisan make:migration create_users_table --create=users
+
+$table->string('role')->after('is_admin'); 		// add column in function up()
+$table->dropColumn('role');						// drop column in function down()
+
+php artisan migrate
+php artisan migrate:rollback
+
+https://laravel.com/docs/5.1/migrations#migration-structure
 
 ------------- END ------------	
 

@@ -23,7 +23,7 @@
      <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
-                  <a href="#" class="navbar-brand">Laravel Angular</a>
+                  <a href="#" class="navbar-brand">Laravel5 AngularJS</a>
                 </div>
                 <div class="navbar-collapse collapse" id="navbar">
                     <ul class="nav navbar-nav">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Employee;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -80,7 +81,7 @@ class AuthController extends Controller
     protected function postLogin(LoginRequest $request) {
         if ($this->auth->attempt($request->only('email', 'password'))) {       
             $user = $this->auth->user();
-            $redirect = ($user->id == 1) ? 'employees' : 'dashboard';               
+            $redirect = ($user->role == 'A') ? 'employees' : 'dashboard';               
             return redirect()->route($redirect)->with('name', $user->name);
         }
  
@@ -98,11 +99,22 @@ class AuthController extends Controller
         $this->user->name = $request->name;
         $this->user->email = $request->email;
         $this->user->password = bcrypt($request->password);
+        $this->user->is_admin = 0;
+        $this->user->role = 'E';
         $this->user->save();
         //return redirect('laravel_angular/users/login');
 
         if ($this->auth->attempt($request->only('email', 'password'))) {
-            return redirect()->route('dashboard');
+            $user = $this->auth->user();
+            $employee = new Employee;
+            $employee->name = $request->name;
+            $employee->email = $request->email;
+            $employee->contact_number = '1234567890';
+            $employee->position = 'From Register';
+            $employee->user_id = $user->id;
+            $employee->save();
+
+            return redirect()->route('dashboard')->with('name', $user->name);
         }
     }
 
