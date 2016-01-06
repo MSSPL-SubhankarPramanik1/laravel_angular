@@ -54,7 +54,7 @@ body {
 	border-color: #ccc;
 }
 .btn-login {
-	background-color: #59B2E0;
+	background-color: #59B2E0 !important;
 	outline: none;
 	color: #fff;
 	font-size: 14px;
@@ -81,7 +81,7 @@ body {
 }
 
 .btn-register {
-	background-color: #1CB94E;
+	background-color: #1CB94E !important;
 	outline: none;
 	color: #fff;
 	font-size: 14px;

@@ -81,8 +81,12 @@ class AuthController extends Controller
     protected function postLogin(LoginRequest $request) {
         if ($this->auth->attempt($request->only('email', 'password'))) {       
             $user = $this->auth->user();
+            /*'<pre>';
+            print_r($user);
+            '</pre>';
+            die('SP');*/
             $redirect = ($user->role == 'A') ? 'employees' : 'dashboard';               
-            return redirect()->route($redirect)->with('name', $user->name);
+            return redirect()->route($redirect)->with('name', $user->email);
         }
  
         return redirect('laravel_angular/users/login')->withErrors([
@@ -96,7 +100,7 @@ class AuthController extends Controller
     }
 
     protected function postRegister(RegisterRequest $request) {
-        $this->user->name = $request->name;
+        //$this->user->name = $request->name;
         $this->user->email = $request->email;
         $this->user->password = bcrypt($request->password);
         $this->user->is_admin = 0;
@@ -109,12 +113,12 @@ class AuthController extends Controller
             $employee = new Employee;
             $employee->name = $request->name;
             $employee->email = $request->email;
-            $employee->contact_number = '1234567890';
-            $employee->position = 'From Register';
+            //$employee->contact_number = $request->contact_number;
+            //$employee->position = $request->position;
             $employee->user_id = $user->id;
             $employee->save();
 
-            return redirect()->route('dashboard')->with('name', $user->name);
+            return redirect()->route('dashboard')->with('name', $request->name);
         }
     }
 

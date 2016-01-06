@@ -18,10 +18,10 @@
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-6">
-                                    <a href="#" class="form-link active" id="login-form-link" ng-click="toggle('login')">Login</a>
+                                    <a href="javascript:void(0);" class="form-link active" id="login-form-link" ng-click="toggle('login')">Login</a>
                                 </div>
                                 <div class="col-xs-6">
-                                    <a href="#" class="form-link " id="register-form-link" ng-click="toggle('register')">Register</a>
+                                    <a href="javascript:void(0);" class="form-link " id="register-form-link" ng-click="toggle('register')">Register</a>
                                 </div>
                             </div>
                             <hr>
@@ -31,25 +31,27 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <!-- <form id="login-form" role="form" style="display: block;"> -->
-                                    {!! Form::open(array('url' => 'laravel_angular/users/login','class'=>'form form-tab','id'=>'login-form','role'=>'form','style'=>'display: block;')) !!}
+                                    {!! Form::open(array('name'=>'frmLogin','url'=>'laravel_angular/users/login','class'=>'form form-tab','id'=>'login-form','role'=>'form','style'=>'display: block;')) !!}
                                         <div class="form-group">
-                                            {!! Form::text('email', null, array('class' => 'form-control','placeholder' => 'Email Address', 'ng-model'=>"users.email")) !!}
+                                            {!! Form::text('email', null, array('class' => 'form-control','placeholder' => 'Email Address','ng-model'=>'users.email','ng-required'=>'true')) !!}
+                                            <span class="help-inline" ng-show="frmLogin.email.$invalid && frmLogin.email.$touched">Valid Email field is required</span>
                                         </div>
                                         <div class="form-group">
-                                            {!! Form::password('password', array('class' => 'form-control','placeholder' => 'Password', 'ng-model'=>"users.password")) !!}
+                                            {!! Form::password('password', array('class' => 'form-control','placeholder' => 'Password','ng-model'=>'users.password','ng-required'=>'true')) !!}
+                                            <span class="help-inline" ng-show="frmLogin.password.$invalid && frmLogin.password.$touched">Password field is required</span>
                                         </div>
-                                        <div class="form-group text-center">
+                                        <!-- <div class="form-group text-center">
                                             <input type="checkbox" tabindex="3" class="" name="remember" id="remember">
                                             <label for="remember"> Remember Me</label>
-                                        </div>
+                                        </div> -->
                                         <div class="form-group">
                                             <div class="row">
                                                 <div class="col-sm-6 col-sm-offset-3">
-                                                    <input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Log In" ng-click="login()" >
+                                                    <input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Log In" ng-click="login()" ng-disabled="frmLogin.$invalid">
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="form-group">
+                                        <!-- <div class="form-group">
                                             <div class="row">
                                                 <div class="col-lg-12">
                                                     <div class="text-center">
@@ -57,37 +59,40 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> -->
                                     <!-- </form> -->
                                     {!! Form::close() !!}
-                                    <!-- <form id="register-form" action="http://phpoll.com/register/process" method="post" role="form" style="display: none;"> -->
-                                    {!! Form::open(array('url' => 'laravel_angular/users/register','class'=>'form form-tab','id'=>'register-form','role'=>'form','style'=>'display: none;')) !!}
-                                        <div class="form-group">
-                                            <!-- <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value=""> -->
-                                            {!! Form::text('name', null, array('class' => 'form-control','placeholder' => 'Name')) !!}
 
+                                    {!! Form::open(array('name'=>'frmRegister','url'=>'laravel_angular/users/register','class'=>'form form-tab','id'=>'register-form','role'=>'form','style'=>'display: none;','novalidate'=>'')) !!}
+                                        <div class="form-group">
+                                            {!! Form::text('name', null, array('class'=>'form-control','placeholder'=> 'Fullname','ng-model'=>'users.name','ng-required'=>'true')) !!}
+                                            <span class="help-inline" ng-show="frmRegister.name.$invalid && frmRegister.name.$touched">Fullname field is required</span>
                                         </div>
                                         <div class="form-group">
-                                            <!-- <input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Email Address" value=""> -->
-                                            {!! Form::text('email', null, array('class' => 'form-control','placeholder' => 'Email Address')) !!}
+                                            {!! Form::text('email', null, array('class'=>'form-control','placeholder'=>'Email Address','ng-model'=>'users.email','ng-required'=>'true')) !!}
+                                            <span class="help-inline" ng-show="frmRegister.email.$invalid && frmRegister.email.$touched">Valid Email field is required</span>
                                         </div>
                                         <div class="form-group">
-                                            <!-- <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password"> -->
-                                            {!! Form::password('password', array('class' => 'form-control','placeholder' => 'Password')) !!}
+                                            {!! Form::password('password', array('class' => 'form-control','placeholder' => 'Password','ng-model'=>'users.password','ng-required'=>'true')) !!}
+                                            <span class="help-inline" ng-show="frmRegister.password.$invalid && frmRegister.password.$touched">Password field is required</span>
                                         </div>
                                         <div class="form-group">
-                                            <!-- <input type="password" name="confirm-password" id="confirm-password" tabindex="2" class="form-control" placeholder="Confirm Password"> -->
-                                            {!! Form::password('password_confirmation',['class'=>'form-control','placeholder' => 'Confirm Password']) !!}
-
+                                            {!! Form::password('password_confirmation',['class'=>'form-control','placeholder' => 'Confirm Password','ng-model'=>'users.password_confirmation','ng-required'=>'true']) !!}
+                                            <span class="help-inline" ng-show="frmRegister.password_confirmation.$invalid && frmRegister.password_confirmation.$touched">Confirm Password field is required</span>
                                         </div>
+                                        <!-- <div class="form-group">  
+                                            {!! Form::text('contact_number', null, array('class' => 'form-control','placeholder' => 'Contact number')) !!}                             
+                                        </div> 
+                                        <div class="form-group">                                      
+                                            {!! Form::text('position', null, array('class' => 'form-control','placeholder' => 'Position')) !!}
+                                        </div> -->                                        
                                         <div class="form-group">
                                             <div class="row">
                                                 <div class="col-sm-6 col-sm-offset-3">
-                                                    <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Register Now">
+                                                    <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" ng-disabled="frmRegister.$invalid" value="Register Now">                                                    
                                                 </div>
                                             </div>
                                         </div>
-                                    <!-- </form> -->
                                     {!! Form::close() !!}
                                 </div>
                             </div>

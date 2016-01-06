@@ -23,29 +23,29 @@
      <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
-                  <a href="#" class="navbar-brand">Laravel5 AngularJS</a>
+                  <a href="javascript:void(0);" class="navbar-brand">Laravel5 AngularJS</a>
                 </div>
                 <div class="navbar-collapse collapse" id="navbar">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Home</a></li>
-                        <li><a href="#about">About</a></li>
+                        <li class="active"><a href="javascript:void(0);">Home</a></li>
+                        <li><a href="javascript:void(0);">About</a></li>
                         <!-- <li class="dropdown">
-                            <a aria-expanded="false" aria-haspopup="true" role="button" data-toggle="dropdown" class="dropdown-toggle" href="#">Dropdown <span class="caret"></span></a>
+                            <a aria-expanded="false" aria-haspopup="true" role="button" data-toggle="dropdown" class="dropdown-toggle" href="javascript:void(0);">Dropdown <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
+                                <li><a href="javascript:void(0);">Action</a></li>
+                                <li><a href="javascript:void(0);">Another action</a></li>
+                                <li><a href="javascript:void(0);">Something else here</a></li>
                                 <li class="divider" role="separator"></li>
                                 <li class="dropdown-header">Nav header</li>
-                                <li><a href="#">Separated link</a></li>
-                                <li><a href="#">One more separated link</a></li>
+                                <li><a href="javascript:void(0);">Separated link</a></li>
+                                <li><a href="javascript:void(0);">One more separated link</a></li>
                             </ul>
                         </li> -->
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <!-- <li><a href="#">Default</a></li>
-                        <li><a href="#">Static top</a></li>
-                        <li class="active"><a href="#">Fixed top <span class="sr-only">(current)</span></a></li> -->
+                        <!-- <li><a href="javascript:void(0);">Default</a></li>
+                        <li><a href="javascript:void(0);">Static top</a></li>
+                        <li class="active"><a href="javascript:void(0);">Fixed top <span class="sr-only">(current)</span></a></li> -->
                         <li ng-controller="usersController" class="padding-10px-top">
                             <button type="button" class="btn btn-danger btn-sm" ng-click="confirmLogout(employee.id)"><span class="glyphicon glyphicon-off"></span> Logout </button>
                         </li> 

@@ -75,7 +75,7 @@
                                 <div class="col-sm-9">
                                     <input type="text" class="form-control" id="contact_number" name="contact_number" placeholder="Contact Number" value="<%=contact_number%>" 
                                     ng-model="employee.contact_number" ng-required="true">
-                                <span class="help-inline" 
+                                    <span class="help-inline" 
                                     ng-show="frmEmployees.contact_number.$invalid && frmEmployees.contact_number.$touched">Contact number field is required</span>
                                 </div>
                             </div>
@@ -85,7 +85,7 @@
                                 <div class="col-sm-9">
                                     <input type="text" class="form-control" id="position" name="position" placeholder="Position" value="<%=position%>" 
                                     ng-model="employee.position" ng-required="true">
-                                <span class="help-inline" 
+                                    <span class="help-inline" 
                                     ng-show="frmEmployees.position.$invalid && frmEmployees.position.$touched">Position field is required</span>
                                 </div>
                             </div>
