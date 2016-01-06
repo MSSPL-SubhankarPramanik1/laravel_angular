@@ -165,6 +165,18 @@ php artisan migrate:rollback
 
 https://laravel.com/docs/5.1/migrations#migration-structure
 
+
+3. Make Laravel Controller
+-----------------------------
+php artisan make:controller Posts
+
+php artisan make:migration create_posts_table --create=posts
+
+https://scotch.io/tutorials/a-guide-to-using-eloquent-orm-in-laravel
+
+
+
+
 ------------- END ------------	
 
 
