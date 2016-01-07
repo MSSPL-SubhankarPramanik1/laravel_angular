@@ -155,7 +155,7 @@ KNOWLEDGE:
 2. Migration
 ---------------
 php artisan make:migration add_votes_to_users_table --table=users 	// create migration file for existing table
-php artisan make:migration create_users_table --create=users
+php artisan make:migration create_users_table --create=users 		// create migration file and table
 
 $table->string('role')->after('is_admin'); 		// add column in function up()
 $table->dropColumn('role');						// drop column in function down()
@@ -166,11 +166,12 @@ php artisan migrate:rollback
 https://laravel.com/docs/5.1/migrations#migration-structure
 
 
-3. Make Laravel Controller
+3. Create Controller/Model/Table
 -----------------------------
-php artisan make:controller Posts
+php artisan make:controller Blogs
+php artisan make:model Blogs
 
-php artisan make:migration create_posts_table --create=posts
+php artisan make:migration create_blogs_table --create=blogs
 
 https://scotch.io/tutorials/a-guide-to-using-eloquent-orm-in-laravel
 
@@ -190,3 +191,5 @@ CREATE USER 'laravel_angular'@'localhost' IDENTIFIED BY 'laravel_angular123@';
 GRANT ALL PRIVILEGES ON laravel_angular.* TO 'laravel_angular'@'localhost';
 
 https://bhavyanshu.me/tutorials/easy-user-registration-and-authentication-in-laravel-5/09/24/2015/
+
+http://prideparrot.com/blog/archive/2014/4/blog_template_using_twitter_bootstrap3_part1#creating-a-blog-template

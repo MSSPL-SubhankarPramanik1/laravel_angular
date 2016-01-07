@@ -28,7 +28,7 @@
                 <div class="navbar-collapse collapse" id="navbar">
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="javascript:void(0);">Home</a></li>
-                        <li><a href="javascript:void(0);">About</a></li>
+                        <li><a href="<?php echo app_path() ?>">Blogs</a></li>
                         <!-- <li class="dropdown">
                             <a aria-expanded="false" aria-haspopup="true" role="button" data-toggle="dropdown" class="dropdown-toggle" href="javascript:void(0);">Dropdown <span class="caret"></span></a>
                             <ul class="dropdown-menu">

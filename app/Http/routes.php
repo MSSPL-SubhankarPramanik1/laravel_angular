@@ -25,8 +25,6 @@ Route::post($project_name.'/public/api/v1/employees/{id}', 'Employees@update');
 Route::delete($project_name.'/public/api/v1/employees/{id}', 'Employees@destroy');	
 
 
-
-
 /* User Authentication */
 Route::get($project_name.'/users/login', 'Auth\AuthController@getLogin');
 Route::post($project_name.'/users/login', 'Auth\AuthController@postLogin');
@@ -50,3 +48,6 @@ Route::group(['middleware' => 'auth'], function() {
 		return View::make('employees.list', compact('name'));
 	}));
 });
+
+
+Route::get($project_name.'/blogs', 'Blogs@index');
