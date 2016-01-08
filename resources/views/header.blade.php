@@ -20,15 +20,25 @@
     </head>    
 
     <body>
-     <nav class="navbar navbar-default navbar-fixed-top">
+        <header role="banner" class="navbar navbar-inverse navbar-fixed-top bs-docs-nav">
             <div class="container">
                 <div class="navbar-header">
-                  <a href="javascript:void(0);" class="navbar-brand">Laravel5 AngularJS</a>
+                    <button data-target=".bs-navbar-collapse" data-toggle="collapse" type="button" class="navbar-toggle">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="javascript:void(0);">Laravel5 AngularJS</a>
                 </div>
-                <div class="navbar-collapse collapse" id="navbar">
+                <nav role="navigation" class="collapse navbar-collapse bs-navbar-collapse">
+             
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="javascript:void(0);">Home</a></li>
-                        <li><a href="<?php echo app_path() ?>">Blogs</a></li>
+                        <li><a href="javascript:void(0);">Blogs</a></li>
+                        <li><a href="javascript:void(0);">Contact</a></li>
+                        <li><a href="javascript:void(0);">My Preferrence</a></li>
+
                         <!-- <li class="dropdown">
                             <a aria-expanded="false" aria-haspopup="true" role="button" data-toggle="dropdown" class="dropdown-toggle" href="javascript:void(0);">Dropdown <span class="caret"></span></a>
                             <ul class="dropdown-menu">
@@ -42,19 +52,23 @@
                             </ul>
                         </li> -->
                     </ul>
+                    
                     <ul class="nav navbar-nav navbar-right">
-                        <!-- <li><a href="javascript:void(0);">Default</a></li>
-                        <li><a href="javascript:void(0);">Static top</a></li>
-                        <li class="active"><a href="javascript:void(0);">Fixed top <span class="sr-only">(current)</span></a></li> -->
+                        <form role="search" class="navbar-form navbar-left">
+                          <div class="form-group">
+                            <input type="text" placeholder="Search" class="form-control">
+                          </div>
+                          <button class="btn btn-default" type="submit">Submit</button>
+                        </form>
                         <li ng-controller="usersController" class="padding-10px-top">
                             <button type="button" class="btn btn-danger btn-sm" ng-click="confirmLogout(employee.id)"><span class="glyphicon glyphicon-off"></span> Logout </button>
                         </li> 
-                    </ul>
-                          
-                </div>
-          </div>
-        </nav>
+                    </ul>                   
 
+                </nav>
+            </div>
+        </header>
+        
         <div class="container">
             @yield('content')
         </div><!-- /.container -->

@@ -1,6 +1,6 @@
 @extends('header')
 
-@section('title') Dashboard @stop
+@section('title') Employees @stop
 
 @section('content')
 <div class="row">

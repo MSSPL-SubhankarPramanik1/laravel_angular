@@ -16,7 +16,7 @@ $project_name = '/laravel_angular';		//'laravel_angular'
 
 Route::get($project_name, function () {
     //return view('index');
-    return view('employees');
+    return view('users.login');
 });
 
 Route::get($project_name.'/public/api/v1/employees/{id?}', 'Employees@index');
@@ -38,16 +38,24 @@ Route::post($project_name.'/users/register', 'Auth\AuthController@postRegister')
 Route::group(['middleware' => 'auth'], function() {
 	$project_name = '/laravel_angular';		//'laravel_angular'
 
-    Route::get($project_name.'/users/dashboard', array('as'=>'dashboard', function() {
+    Route::get($project_name.'/dashboard', array('as'=>'dashboard', function() {
     	$name = Session::get('name');
 		return View::make('users.dashboard', compact('name'));
 	}));
 
-	Route::get($project_name.'/users/employees', array('as'=>'employees', function() {
+	Route::get($project_name.'/employees', array('as'=>'employees', function() {
 		$name = Session::get('name');
 		return View::make('employees.list', compact('name'));
 	}));
 });
 
 
-Route::get($project_name.'/blogs', 'Blogs@index');
+
+
+
+Route::get($project_name.'/blogs', function () {
+    return view('blogs.list');
+});
+Route::get($project_name.'/public/api/v1/blogs/{id?}', 'Blogs@index');
+//Route::resource($project_name.'/blogs', 'Blogs');
+

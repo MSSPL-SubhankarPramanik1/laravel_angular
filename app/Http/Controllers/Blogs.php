@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Blog;
+use App\Employee;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -14,11 +15,36 @@ class Blogs extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        return Blog::orderBy('id', 'desc')->get();
-    }
+    public function index($id = null) {
+        if ($id == null) {
 
+
+            $locations_with_devices = Blogs::with('Employees')->get();
+            //return $locations_with_devices;
+            echo '<pre>';
+            print_r($locations_with_devices);
+            echo '</pre>';
+
+
+
+
+
+
+
+
+            /*$a = Blog::orderBy('id', 'desc')->get();
+            $b = Employee::find($a->user_id);
+            echo '<pre>';
+            print_r($b);
+            echo '</pre>';*/
+            //return View('blogs.list');
+            //return Blog::orderBy('id', 'desc')->get();
+
+        } else {
+            return $this->show($id);
+        }
+    }
+    
     /**
      * Show the form for creating a new resource.
      *

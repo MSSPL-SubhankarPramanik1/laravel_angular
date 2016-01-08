@@ -1,10 +1,11 @@
 app.controller('employeesController', function($scope, $http, API_URL) {
+    
     //retrieve employees listing from API
     $http.get(API_URL + "employees")
-            .success(function(response) {
-                console.log(response);
-                $scope.employees = response;
-            });
+    .success(function(response) {
+        console.log(response);
+        $scope.employees = response;
+    });
     
     //show modal form
     $scope.toggle = function(modalstate, id) {
@@ -65,14 +66,14 @@ app.controller('employeesController', function($scope, $http, API_URL) {
                 method: 'DELETE',
                 url: API_URL + 'employees/' + id
             }).
-                    success(function(data) {
-                        console.log(data);
-                        location.reload();
-                    }).
-                    error(function(data) {
-                        console.log(data);
-                        alert('Unable to delete');
-                    });
+            success(function(data) {
+                console.log(data);
+                location.reload();
+            }).
+            error(function(data) {
+                console.log(data);
+                alert('Unable to delete');
+            });
         } else {
             return false;
         }

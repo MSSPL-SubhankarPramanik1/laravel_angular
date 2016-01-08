@@ -122,7 +122,7 @@ subhankar@limtexad117:~$ cd /var/www/laravel_angular
 subhankar@limtexad117:/var/www/laravel_angular$ git init
 Reinitialized existing Git repository in /var/www/laravel_angular/.git/
 subhankar@limtexad117:/var/www/laravel_angular$ git add .
-subhankar@limtexad117:/var/www/laravel_angular$ git commit -m "12th commit"
+subhankar@limtexad117:/var/www/laravel_angular$ git commit -m "08-01-2015"
 subhankar@limtexad117:/var/www/laravel_angular$ git push -u origin master
 Username for 'https://github.com': subhankarbachchu
 Password for 'https://subhankarbachchu@github.com': 
