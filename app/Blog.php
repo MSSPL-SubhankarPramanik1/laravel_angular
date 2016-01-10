@@ -8,7 +8,13 @@ class Blog extends Model
 {
    	protected $fillable = array('id', 'name', 'content');
 
-   	public function employee(){
-	    return $this->belongsTo('Employees');
-	}
+   	public function getAuthor()
+    {
+        return $this->belongsTo('User','user_id');
+    }
+
+    /*public function getReaders()
+    {
+        return $this->belongsToMany('User','blogreaders','blogid','readerid');
+    }*/
 }

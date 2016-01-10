@@ -19,11 +19,11 @@ class Blogs extends Controller
         if ($id == null) {
 
 
-            $locations_with_devices = Blogs::with('Employees')->get();
+            //$locations_with_devices = Blogs::with('Employees')->get();
             //return $locations_with_devices;
-            echo '<pre>';
+           /* echo '<pre>';
             print_r($locations_with_devices);
-            echo '</pre>';
+            echo '</pre>';*/
 
 
 
@@ -39,6 +39,9 @@ class Blogs extends Controller
             echo '</pre>';*/
             //return View('blogs.list');
             //return Blog::orderBy('id', 'desc')->get();
+
+            $blogs = Blog::All();
+            return View::make('blogs.list')->with('blogs', $blogs);
 
         } else {
             return $this->show($id);

@@ -53,9 +53,21 @@ Route::group(['middleware' => 'auth'], function() {
 
 
 
-Route::get($project_name.'/blogs', function () {
+/*Route::get($project_name.'/blogs', function () {
     return view('blogs.list');
 });
-Route::get($project_name.'/public/api/v1/blogs/{id?}', 'Blogs@index');
-//Route::resource($project_name.'/blogs', 'Blogs');
+Route::get($project_name.'/public/api/v1/blogs/{id?}', 'Blogs@index');*/
 
+
+/*Route::get($project_name.'/blogs', function () {
+	$blogs = Blog::All();
+    return View::make('blogs.list')->with('blogs', $blogs);
+});*/
+
+Route::get($project_name.'/blogs', 'Blogs@index');
+
+/*
+Route::get($project_name.'/users', function () {
+	$users = User::All();
+    return View::make('users.list')->with('users', $users);
+});*/
